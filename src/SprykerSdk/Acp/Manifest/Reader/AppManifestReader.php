@@ -111,7 +111,6 @@ class AppManifestReader implements AppManifestReaderInterface
             return;
         }
 
-        /** @var \SplFileInfo $configurationFile */
         $configurationFile = $this->finder->getFile($configurationFilePath);
 
         $manifestConfigurationTransfer = (new ManifestConfigurationTransfer())

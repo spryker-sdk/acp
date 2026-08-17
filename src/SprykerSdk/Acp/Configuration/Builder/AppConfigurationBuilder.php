@@ -50,24 +50,24 @@ class AppConfigurationBuilder implements AppConfigurationBuilderInterface
         $requiredFields = $appConfigurationRequestTransfer->getRequired();
 
         foreach ($appConfigurationRequestTransfer->getProperties() as $name => $property) {
-            $properties[$name] = ['type' => strtolower($property['type'])];
-            $properties[$name]['widget']['id'] = strtolower($property['widget']);
+            $formattedProperty = ['type' => strtolower($property['type'])];
+            $formattedProperty['widget']['id'] = strtolower($property['widget']);
 
             if ($property['widget'] === 'Text') {
-                $properties[$name]['placeholder'] = $name;
-                $properties[$name]['widget']['id'] = 'textline';
+                $formattedProperty['placeholder'] = $name;
+                $formattedProperty['widget']['id'] = 'textline';
             }
 
             if (in_array($name, $requiredFields)) {
-                $properties[$name]['isRequired'] = true;
+                $formattedProperty['isRequired'] = true;
             }
 
             if ($property['widget'] === 'Checkbox') {
-                $properties[$name]['items']['type'] = strtolower($property['itemsType']);
-                $properties[$name]['items']['widget']['id'] = strtolower($property['itemsType']);
+                $formattedProperty['items']['type'] = strtolower($property['itemsType']);
+                $formattedProperty['items']['widget']['id'] = strtolower($property['itemsType']);
 
                 foreach ($property['items'] as $item) {
-                    $properties[$name]['items']['oneOf'][] = [
+                    $formattedProperty['items']['oneOf'][] = [
                         'description' => $item,
                         'enum' => [$item],
                     ];
@@ -76,12 +76,14 @@ class AppConfigurationBuilder implements AppConfigurationBuilderInterface
 
             if ($property['widget'] === 'Radio') {
                 foreach ($property['items'] as $item) {
-                    $properties[$name]['oneOf'][] = [
+                    $formattedProperty['oneOf'][] = [
                         'description' => $item,
                         'enum' => [$item],
                     ];
                 }
             }
+
+            $properties[$name] = $formattedProperty;
         }
 
         return $properties;
