@@ -145,9 +145,9 @@ class AppTranslationCreateConsole extends AbstractConsole implements SignalableC
     /**
      * @param int $signal
      *
-     * @return void
+     * @return int|false
      */
-    public function handleSignal(int $signal): void
+    public function handleSignal(int $signal): int|false
     {
         // @codeCoverageIgnoreStart
         exit($this->doHandleSignal($this->input, $this->output, $signal, $this->translations));
@@ -170,8 +170,6 @@ class AppTranslationCreateConsole extends AbstractConsole implements SignalableC
     ): int {
         if (
             $signal === SIGINT
-            && $input !== null
-            && $output !== null
             && $translations
         ) {
             $appTranslationResponseTransfer = $this->saveTranslations($input, $translations);
