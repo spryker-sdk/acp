@@ -12,6 +12,7 @@ use SprykerSdk\Acp\AcpConfig;
 use SprykerSdk\Acp\AcpFacade;
 use SprykerSdk\Acp\AcpFacadeInterface;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class AbstractConsole extends Command
@@ -104,5 +105,16 @@ class AbstractConsole extends Command
         foreach ($messageTransfers as $messageTransfer) {
             $output->writeln($messageTransfer->getMessageOrFail());
         }
+    }
+
+    /**
+     * @return \Symfony\Component\Console\Helper\QuestionHelper
+     */
+    protected function getQuestionHelper(): QuestionHelper
+    {
+        /** @var \Symfony\Component\Console\Helper\QuestionHelper $questionHelper */
+        $questionHelper = $this->getHelper('question');
+
+        return $questionHelper;
     }
 }

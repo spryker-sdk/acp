@@ -106,7 +106,7 @@ class AppConfigurationCreateConsole extends AbstractConsole
      */
     protected function askTextQuestion(InputInterface $input, OutputInterface $output, string $questionText): string
     {
-        return $this->getHelper('question')->ask($input, $output, new Question($questionText));
+        return $this->getQuestionHelper()->ask($input, $output, new Question($questionText));
     }
 
     /**
@@ -125,7 +125,7 @@ class AppConfigurationCreateConsole extends AbstractConsole
         array $questionOptions,
         $defaultSelected,
     ): string {
-        return $this->getHelper('question')->ask($input, $output, new ChoiceQuestion($questionText, $questionOptions, $defaultSelected));
+        return $this->getQuestionHelper()->ask($input, $output, new ChoiceQuestion($questionText, $questionOptions, $defaultSelected));
     }
 
     /**
@@ -140,7 +140,7 @@ class AppConfigurationCreateConsole extends AbstractConsole
         OutputInterface $output,
         string $questionText,
     ): string {
-        return $this->getHelper('question')->ask($input, $output, new ChoiceQuestion($questionText, [1 => 'Yes', 2 => 'No'], 1));
+        return $this->getQuestionHelper()->ask($input, $output, new ChoiceQuestion($questionText, [1 => 'Yes', 2 => 'No'], 1));
     }
 
     /**
@@ -162,7 +162,7 @@ class AppConfigurationCreateConsole extends AbstractConsole
         $question = new ChoiceQuestion($questionText, $questionOptions, $defaultSelected);
         $question->setMultiselect(true);
 
-        return $this->getHelper('question')->ask($input, $output, $question);
+        return $this->getQuestionHelper()->ask($input, $output, $question);
     }
 
     /**

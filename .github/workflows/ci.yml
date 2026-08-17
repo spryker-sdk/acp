@@ -70,7 +70,7 @@ jobs:
               run: composer test-cover
 
             - name: Code Coverage Report
-              if: success() && matrix.php-version == '8.1'
+              if: success() && matrix.php-version == '8.3'
               uses: codecov/codecov-action@v3
               with:
                   file: ./tests/_output/coverage.xml

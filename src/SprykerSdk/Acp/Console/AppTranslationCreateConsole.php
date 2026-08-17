@@ -194,7 +194,7 @@ class AppTranslationCreateConsole extends AbstractConsole implements SignalableC
      */
     protected function askTextQuestion(InputInterface $input, OutputInterface $output, string $questionText): string
     {
-        return $this->getHelper('question')->ask($input, $output, new Question($questionText)) ?: '';
+        return $this->getQuestionHelper()->ask($input, $output, new Question($questionText)) ?: '';
     }
 
     /**
@@ -338,7 +338,7 @@ class AppTranslationCreateConsole extends AbstractConsole implements SignalableC
     {
         array_unshift($existingLocales, static::CHOICE_NEW_LOCALE);
 
-        return $this->getHelper('question')->ask(
+        return $this->getQuestionHelper()->ask(
             $input,
             $output,
             new ChoiceQuestion(
@@ -377,7 +377,7 @@ class AppTranslationCreateConsole extends AbstractConsole implements SignalableC
         OutputInterface $output,
         string $questionText,
     ): string {
-        return $this->getHelper('question')->ask($input, $output, new ChoiceQuestion($questionText, [1 => 'Yes', 2 => 'No'], 1));
+        return $this->getQuestionHelper()->ask($input, $output, new ChoiceQuestion($questionText, [1 => 'Yes', 2 => 'No'], 1));
     }
 
     /**
