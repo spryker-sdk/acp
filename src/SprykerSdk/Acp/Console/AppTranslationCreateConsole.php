@@ -144,8 +144,6 @@ class AppTranslationCreateConsole extends AbstractConsole implements SignalableC
 
     /**
      * @param int $signal
-     *
-     * @return int|false
      */
     public function handleSignal(int $signal): int|false
     {
