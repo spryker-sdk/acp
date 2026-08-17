@@ -61,8 +61,6 @@ class RequiredFieldsFileValidator implements FileValidatorInterface
     }
 
     /**
-     * @param mixed $field
-     *
      * @return bool
      */
     protected function fieldIsEmpty(mixed $field): bool

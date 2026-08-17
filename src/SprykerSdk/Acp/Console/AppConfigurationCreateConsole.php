@@ -366,7 +366,7 @@ class AppConfigurationCreateConsole extends AbstractConsole
      */
     protected function setWidgetOptions(InputInterface $input, OutputInterface $output, string $propertyName, string $item): void
     {
-        if ($this->checkWidgetOptionValueType($input, $output, $propertyName, $item) === true) {
+        if ($this->checkWidgetOptionValueType($input, $output, $propertyName, $item)) {
             if (!isset($this->properties[$propertyName]['items']) || !in_array($item, $this->properties[$propertyName]['items'])) {
                 $this->properties[$propertyName]['items'][] = $item;
             }
