@@ -18,10 +18,9 @@
         "codeception/module-phpbrowser": "*",
         "mikey179/vfsstream": "^1.6",
         "phpstan/phpdoc-parser": "~1.5.1",
-        "sllh/composer-versions-check": "^2.0",
         "spryker-sdk/architector": "0.1.x-dev",
         "spryker/code-sniffer": "*",
-        "spryker/kernel": "^3.68",
+        "spryker/kernel": "*",
         "symfony/var-dumper": "*"
     },
     "autoload": {
@@ -52,8 +51,7 @@
         },
         "sort-packages": true,
         "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "sllh/composer-versions-check": true
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
     "scripts": {
